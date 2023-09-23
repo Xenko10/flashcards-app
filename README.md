@@ -8,6 +8,7 @@ To do:
 - Add questions.
 - Add answers (only if question to this answer exist).
 - (maybe it will be done) Add image optionally, it can be either in question and answer. image can't have higher resolution that ....x.... and weight more than x MB.
+- Editing set.
 
 2. Quiz
 
