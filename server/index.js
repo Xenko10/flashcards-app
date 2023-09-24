@@ -28,12 +28,9 @@ const connection = mysql.createConnection({
 });
 
 app.post("/insert", (req, res) => {
-  const question = req.body.data.question;
-  const answer = req.body.data.answer;
-
   connection.query(
-    "INSERT INTO set1 (question, answer) VALUES (?,?)",
-    [question, answer],
+    "INSERT INTO set1 (question, answer) VALUES ?",
+    [req.body.dataArray],
     (err, result) => {
       if (err) {
         console.log(err);
