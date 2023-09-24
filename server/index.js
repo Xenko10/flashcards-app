@@ -19,7 +19,7 @@ const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const database_port = process.env.PORT;
 
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
   host: host_name,
   user: user,
   password: password,
@@ -31,7 +31,7 @@ app.post("/insert", (req, res) => {
   const question = req.body.data.question;
   const answer = req.body.data.answer;
 
-  db.query(
+  connection.query(
     "INSERT INTO set1 (question, answer) VALUES (?,?)",
     [question, answer],
     (err, result) => {
