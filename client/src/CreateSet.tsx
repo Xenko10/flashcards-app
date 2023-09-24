@@ -12,7 +12,7 @@ export default function CreateSet() {
   const [uuids, setNewUuid] = useState<string[]>([uuidv4()]);
 
   function handleNewUuid() {
-    setNewUuid((prevUuid: any) => [...prevUuid, uuidv4()]);
+    setNewUuid((prevUuids: any) => [...prevUuids, uuidv4()]);
   }
 
   const {
@@ -47,7 +47,7 @@ export default function CreateSet() {
           </div>
         );
       })}
-      <input type='submit' />
+      <input type='submit' value='Submit' />
       <button onClick={handleNewUuid}>New question</button>
     </form>
   );
