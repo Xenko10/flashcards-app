@@ -2,17 +2,15 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import QuestionForm from "./pages_components/QuestionForm";
 
-type Inputs = {
-  question: string;
-  answer: string;
-};
+type Inputs = any;
 
 export default function CreateSet() {
   const [uuids, setNewUuid] = useState<string[]>([uuidv4()]);
 
   function handleNewUuid() {
-    setNewUuid((prevUuids: any) => [...prevUuids, uuidv4()]);
+    setNewUuid((prevUuids) => [...prevUuids, uuidv4()]);
   }
 
   const {
@@ -31,20 +29,15 @@ export default function CreateSet() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {/* add name of the set input */}
       {uuids.map((uuid, index) => {
-        const questionFieldName = `question${index}`;
-        const answerFieldName = `answer${index}`;
         return (
-          <div key={uuid}>
-            <p>question nr {++index}</p>
-            <input
-              {...register(questionFieldName as "question", {
-                required: true,
-              })}
-            />
-            <input {...register(answerFieldName as "answer")} />
-            {errors.question && <span>This field is required</span>}
-          </div>
+          <QuestionForm
+            index={index}
+            key={uuid}
+            register={register}
+            errors={errors}
+          />
         );
       })}
       <input type='submit' value='Submit' />

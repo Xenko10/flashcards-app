@@ -7,7 +7,7 @@ export default function Header() {
         Site Name
       </Link>
       <ul>
-        <CustomLink to='/CreateSet'>Create Set</CustomLink>
+        <CustomLink to='/CreateSetForm'>Create Set</CustomLink>
         <CustomLink to='/Flashcards'>Flashcards</CustomLink>
       </ul>
     </nav>
