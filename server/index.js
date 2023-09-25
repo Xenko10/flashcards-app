@@ -28,14 +28,27 @@ const connection = mysql.createConnection({
 });
 
 app.post("/insert", (req, res) => {
+  console.log(req.body);
   connection.query(
-    "INSERT INTO set1 (question, answer) VALUES ?",
-    [req.body.dataArray],
+    `CREATE TABLE IF NOT EXISTS ?? (
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    question VARCHAR(255) NOT NULL,
+    answer VARCHAR(255) NOT NULL
+  )`,
+    [req.body.setTableName],
+    (err) => {
+      if (err) throw new Error(err);
+      console.log("Table created/exists");
+    }
+  );
+  connection.query(
+    "INSERT INTO ?? (question, answer) VALUES ?",
+    [req.body.setTableName, req.body.dataArray],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Values Inserted");
+        console.log("Values Inserted");
       }
     }
   );

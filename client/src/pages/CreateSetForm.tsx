@@ -16,6 +16,7 @@ export default function CreateSet() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -23,13 +24,14 @@ export default function CreateSet() {
       data[`question${index}` as keyof Inputs],
       data[`answer${index}` as keyof Inputs],
     ]);
-
-    axios.post("http://localhost:5174/insert", { dataArray });
+    const setTableName = data["setTableName"];
+    axios.post("http://localhost:5174/insert", { dataArray, setTableName });
+    reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* add name of the set input */}
+      <input {...register("setTableName")} />
       {uuids.map((uuid, index) => {
         return (
           <QuestionForm
