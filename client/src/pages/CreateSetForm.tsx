@@ -26,6 +26,7 @@ export default function CreateSet() {
     ]);
     const setTableName = data["setTableName"];
     axios.post("http://localhost:5174/insert", { dataArray, setTableName });
+    // add page where it shows that it was successful or there was an error
     reset();
   };
 

@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <h1>Footer</h1>;
+  return <p>Copyright © {new Date().getFullYear()}</p>;
 }
