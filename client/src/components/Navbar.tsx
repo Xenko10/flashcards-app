@@ -1,14 +1,15 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 export default function Header() {
   return (
-    <nav>
-      <Link to='/' className='site-title'>
-        Site Name
+    <nav className={styles.nav}>
+      <Link to='/' className={styles.siteName}>
+        Flashcards
       </Link>
       <ul>
-        <CustomLink to='/CreateSetForm'>Create Set</CustomLink>
-        <CustomLink to='/Flashcards'>Flashcards</CustomLink>
+        <CustomLink to='/createsetform'>Create Set</CustomLink>
+        <CustomLink to='/flashcards'>Flashcards</CustomLink>
       </ul>
     </nav>
   );

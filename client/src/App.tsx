@@ -12,10 +12,10 @@ export default function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Flashcards' element={<Flashcards />} />
-        <Route path='/CreateSetForm' element={<CreateSetForm />} />
-        <Route path='/NoPage' element={<NoPage />} />
+        <Route path='/' index element={<Home />} />
+        <Route path='/flashcards' element={<Flashcards />} />
+        <Route path='/createsetform' element={<CreateSetForm />} />
+        <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />
     </>
