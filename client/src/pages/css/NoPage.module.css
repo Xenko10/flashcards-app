@@ -1,0 +1,16 @@
+.main {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainParagraph {
+  font-size: 1.25rem;
+}
+
+.mainGoToHome {
+  color: #7c81ad;
+  font-size: 1.25rem;
+}
