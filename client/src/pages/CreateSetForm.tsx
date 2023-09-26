@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import QuestionForm from "./pages_components/QuestionForm";
+import styles from "./css/CreateSetForm.module.css";
 
 type Inputs = any;
 
@@ -13,12 +14,7 @@ export default function CreateSet() {
     setNewUuid((prevUuids) => [...prevUuids, uuidv4()]);
   }
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit, reset } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const dataArray = uuids.map((_uuid, index) => [
       data[`question${index}` as keyof Inputs],
@@ -31,20 +27,20 @@ export default function CreateSet() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("setTableName")} />
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.main}>
+      <div className={styles.typeOfSetDiv}>Type name of the set: </div>
+      <textarea
+        {...register("setTableName", {
+          required: true,
+        })}
+      />
       {uuids.map((uuid, index) => {
-        return (
-          <QuestionForm
-            index={index}
-            key={uuid}
-            register={register}
-            errors={errors}
-          />
-        );
+        return <QuestionForm index={index} key={uuid} register={register} />;
       })}
-      <input type='submit' value='Submit' />
-      <button onClick={handleNewUuid}>New question</button>
+      <div className={styles.bottomButtonsWrapper}>
+        <input type='submit' value='Submit' />
+        <button onClick={handleNewUuid}>New question</button>
+      </div>
     </form>
   );
 }
