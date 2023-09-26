@@ -6,9 +6,6 @@
   margin-bottom: 2rem;
 }
 
-.main textarea {
-}
-
 .questionForm {
   display: flex;
   flex-direction: column;
