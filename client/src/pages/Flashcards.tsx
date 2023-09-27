@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ListComponent from "./pages_components/ListComponent";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Flashcards() {
   const [sets, setSets] = useState([]);
@@ -20,7 +22,9 @@ export default function Flashcards() {
       <div>Flashcards</div>
       <ul>
         {sets.map((set: any) => {
-          return <li>{set.Tables_in_flashcards}</li>;
+          return (
+            <ListComponent set={set.Tables_in_flashcards} key={uuidv4()} />
+          );
         })}
       </ul>
     </>
