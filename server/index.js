@@ -44,7 +44,7 @@ app.post("/insert", (req, res) => {
   connection.query(
     "INSERT INTO ?? (question, answer) VALUES ?",
     [req.body.setTableName, req.body.dataArray],
-    (err, result) => {
+    (err) => {
       if (err) {
         console.log(err);
       } else {
@@ -58,7 +58,6 @@ app.get("/getsets", (req, res) => {
   connection.query("show tables in ??", [database], (err, result) => {
     if (err) throw new Error(err);
     const data = JSON.parse(JSON.stringify(result));
-    console.log(data);
     res.send(data);
   });
 });

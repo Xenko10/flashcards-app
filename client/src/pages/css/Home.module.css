@@ -1,0 +1,25 @@
+.main {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainParagraph {
+  font-size: 1.75rem;
+}
+
+.links {
+  width: 50%;
+
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem 5rem 5rem 5rem;
+}
+
+.links > a {
+  color: #7c81ad;
+  font-size: 1.5rem;
+  text-decoration: none;
+}

@@ -29,11 +29,13 @@ export default function CreateSet() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.main}>
       <div className={styles.typeOfSetDiv}>Type name of the set: </div>
+      {/* show error when table already exist */}
       <textarea
         {...register("setTableName", {
           required: true,
         })}
       />
+      {/* delete question */}
       {uuids.map((uuid, index) => {
         return <QuestionForm index={index} key={uuid} register={register} />;
       })}
