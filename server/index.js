@@ -54,6 +54,15 @@ app.post("/insert", (req, res) => {
   );
 });
 
+app.get("/getsets", (req, res) => {
+  connection.query("show tables in ??", [database], (err, result) => {
+    if (err) throw new Error(err);
+    const data = JSON.parse(JSON.stringify(result));
+    console.log(data);
+    res.send(data);
+  });
+});
+
 app.listen(server_port, () => {
   console.log(`Running on port ${server_port}.`);
 });
