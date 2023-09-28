@@ -12,7 +12,7 @@ export default function Home() {
         <Link to='/editsetform' className={styles.mainGotoHome}>
           Edit set
         </Link>
-        <Link to='/useflashcards' className={styles.mainGotoHome}>
+        <Link to='/flashcards' className={styles.mainGotoHome}>
           Use flashcards
         </Link>
         <Link to='/takethetest' className={styles.mainGotoHome}>
