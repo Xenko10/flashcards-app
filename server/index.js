@@ -62,6 +62,19 @@ app.get("/getsets", (req, res) => {
   });
 });
 
+app.get("/getquestions/:flashcardId", (req, res) => {
+  const flsahcardId = req.params.flashcardId;
+  connection.query(
+    "SELECT question, answer FROM ??",
+    [flsahcardId],
+    (err, result) => {
+      if (err) throw new Error(err);
+      const data = JSON.parse(JSON.stringify(result));
+      res.send(data);
+    }
+  );
+});
+
 app.listen(server_port, () => {
   console.log(`Running on port ${server_port}.`);
 });
