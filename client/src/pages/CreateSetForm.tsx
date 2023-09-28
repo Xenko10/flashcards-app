@@ -35,7 +35,7 @@ export default function CreateSet() {
           required: true,
         })}
       />
-      {/* delete question */}
+      {/* add delete question */}
       {uuids.map((uuid, index) => {
         return <QuestionForm index={index} key={uuid} register={register} />;
       })}

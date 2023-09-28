@@ -32,8 +32,8 @@ app.post("/insert", (req, res) => {
   connection.query(
     `CREATE TABLE IF NOT EXISTS ?? (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    question VARCHAR(255) NOT NULL,
-    answer VARCHAR(255) NOT NULL
+    question VARCHAR(1000) NOT NULL,
+    answer VARCHAR(1000) NOT NULL
   )`,
     [req.body.setTableName],
     (err) => {
