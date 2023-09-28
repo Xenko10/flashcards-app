@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ListComponent from "./pages_components/ListComponent";
+import LinkComponent from "./pages_components/LinkComponent";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./css/Flashcards.module.css";
 
 export default function Flashcards() {
   const [sets, setSets] = useState([]);
@@ -18,15 +19,11 @@ export default function Flashcards() {
   }, []);
 
   return (
-    <>
+    <div className={styles.main}>
       <div>Flashcards</div>
-      <ul>
-        {sets.map((set: any) => {
-          return (
-            <ListComponent set={set.Tables_in_flashcards} key={uuidv4()} />
-          );
-        })}
-      </ul>
-    </>
+      {sets.map((set: any) => {
+        return <LinkComponent set={set.Tables_in_flashcards} key={uuidv4()} />;
+      })}
+    </div>
   );
 }

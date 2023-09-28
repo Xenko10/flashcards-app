@@ -7,6 +7,7 @@ import CreateSetForm from "./pages/CreateSetForm";
 import Flashcards from "./pages/Flashcards";
 import EditSetForm from "./pages/EditSetForm";
 import TakeTheTest from "./pages/TakeTheTest";
+import FlashcardPage from "./pages/FlashcardPage";
 import NoPage from "./pages/NoPage";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Route path='/createsetform' element={<CreateSetForm />} />
         <Route path='/editsetform' element={<EditSetForm />} />
         <Route path='/takethetest' element={<TakeTheTest />} />
+        <Route path='/flashcard/:flashcardId' element={<FlashcardPage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />
