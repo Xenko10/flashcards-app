@@ -50,18 +50,8 @@ export default function FlashcardPage() {
 
   return (
     <div className={styles.main}>
-      <ArrowBackIosIcon
-        color={count === 0 ? "disabled" : undefined}
-        onClick={
-          count > 0
-            ? () => {
-                dispatch({ type: ACTIONS.DECREMENT });
-                setIsQuestion(true);
-              }
-            : () => {}
-        }
-      />
       <div
+        className={styles.content}
         onClick={() => {
           setIsQuestion(!isQuestion);
         }}>
@@ -71,17 +61,30 @@ export default function FlashcardPage() {
             : qnaList[count].answer
           : ""}
       </div>
-      <ArrowForwardIosIcon
-        color={count === qnaList.length - 1 ? "disabled" : undefined}
-        onClick={
-          count < qnaList.length - 1
-            ? () => {
-                dispatch({ type: ACTIONS.INCREMENT });
-                setIsQuestion(true);
-              }
-            : () => {}
-        }
-      />
+      <div className={styles.arrowsWrapper}>
+        <ArrowBackIosIcon
+          color={count === 0 ? "disabled" : undefined}
+          onClick={
+            count > 0
+              ? () => {
+                  dispatch({ type: ACTIONS.DECREMENT });
+                  setIsQuestion(true);
+                }
+              : () => {}
+          }
+        />
+        <ArrowForwardIosIcon
+          color={count === qnaList.length - 1 ? "disabled" : undefined}
+          onClick={
+            count < qnaList.length - 1
+              ? () => {
+                  dispatch({ type: ACTIONS.INCREMENT });
+                  setIsQuestion(true);
+                }
+              : () => {}
+          }
+        />
+      </div>
     </div>
   );
 }
