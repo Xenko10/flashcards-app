@@ -28,13 +28,16 @@ const connection = mysql.createConnection({
 });
 
 app.post("/insert", (req, res) => {
+  const tableName = req.body.tableName;
+  const dataArray = req.body.qnaArray;
+  const values = dataArray.map((item) => [item.question, item.answer]);
   connection.query(
     `CREATE TABLE IF NOT EXISTS ?? (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     question VARCHAR(1000) NOT NULL,
     answer VARCHAR(1000) NOT NULL
   )`,
-    [req.body.setTableName],
+    [tableName],
     (err) => {
       if (err) throw new Error(err);
       console.log("Table created/exists");
@@ -42,7 +45,7 @@ app.post("/insert", (req, res) => {
   );
   connection.query(
     "INSERT INTO ?? (question, answer) VALUES ?",
-    [req.body.setTableName, req.body.dataArray],
+    [tableName, values],
     (err) => {
       if (err) {
         console.log(err);

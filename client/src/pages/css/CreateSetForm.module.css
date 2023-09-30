@@ -3,63 +3,69 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
-}
+  margin: 1rem 0;
 
-.questionForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-
-.inputWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.typeOfSetDiv {
-  font-size: 2rem;
-}
-
-.questionNrDiv {
-  font-size: 1.5rem;
-  margin: 0.5rem;
-}
-
-.main > textarea {
-  padding: 0.5rem;
-
-  margin: 1rem;
-  margin-bottom: 0;
-
-  width: 20rem;
-  height: 2rem;
-
-  font-size: 1.5rem;
   text-align: center;
 }
 
-.input {
+.main textarea {
+  font-size: 1rem;
+  padding: 0.5rem;
+
+  resize: none;
+  outline: none;
+
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem 0;
+}
+
+.textareaWrapper {
+  display: flex;
+  gap: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.buttonWrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
-
-  font-size: 1.25rem;
+  margin: 1rem 0;
+  gap: 1rem;
 }
 
-.input > textarea {
-  margin: 1rem;
-  width: 20rem;
-  height: 4rem;
+.deleteButton {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.bottomButtonsWrapper > input,
-.bottomButtonsWrapper > button {
-  margin: 1rem;
-  padding: 0.5rem;
+.buttonWrapper > button,
+.buttonWrapper > input {
   width: 10rem;
-  font-size: 1.25rem;
+  height: 3rem;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.2s ease-in-out;
 }

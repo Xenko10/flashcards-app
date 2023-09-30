@@ -1,48 +1,96 @@
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import QuestionForm from "./pages_components/QuestionForm";
 import styles from "./css/CreateSetForm.module.css";
 
-type Inputs = any;
+interface QnaItem {
+  question: string;
+  answer: string;
+}
 
-export default function CreateSet() {
-  const [uuids, setNewUuid] = useState<string[]>([uuidv4()]);
+type FormValues = {
+  tableName: string;
+  qnaArray: QnaItem[];
+};
 
-  function handleNewUuid() {
-    setNewUuid((prevUuids) => [...prevUuids, uuidv4()]);
-  }
-
-  const { register, handleSubmit, reset } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const dataArray = uuids.map((_uuid, index) => [
-      data[`question${index}`],
-      data[`answer${index}`],
-    ]);
-    const setTableName = data["setTableName"];
-    axios.post("http://localhost:5174/insert", { dataArray, setTableName });
-    // add page where it shows that it was successful or there was an error
-    reset();
+export default function CreateSetForm() {
+  const { register, control, handleSubmit, reset } = useForm<FormValues>({
+    defaultValues: {
+      qnaArray: [{ question: "", answer: "" }],
+    },
+  });
+  const { fields, append, remove } = useFieldArray({
+    name: "qnaArray",
+    control,
+  });
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const response = await axios.post("http://localhost:5174/insert", {
+        qnaArray: data.qnaArray,
+        tableName: data.tableName,
+      });
+      console.log(response.data);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.main}>
-      <div className={styles.typeOfSetDiv}>Type name of the set: </div>
-      {/* show error when table already exist */}
-      <textarea
-        {...register("setTableName", {
-          required: true,
+    <div className={styles.main}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <h1 className={styles.tableNameInfo}>Type name of the set: </h1>
+        <textarea
+          placeholder='table name'
+          {...register("tableName", {
+            required: true,
+          })}
+          className={styles.tableNameTextArea}
+        />
+        {fields.map((field, index) => {
+          return (
+            <div key={field.id}>
+              <section className={styles.section} key={field.id}>
+                <h2>Question {index + 1}</h2>
+                <div className={styles.textareaWrapper}>
+                  <textarea
+                    placeholder='question'
+                    {...register(`qnaArray.${index}.question`, {
+                      required: true,
+                      maxLength: 1000,
+                    })}
+                  />
+                  <textarea
+                    placeholder='answer'
+                    {...register(`qnaArray.${index}.answer` as const, {
+                      required: true,
+                      maxLength: 1000,
+                    })}
+                  />
+                </div>
+                <button
+                  type='button'
+                  onClick={() => remove(index)}
+                  className={styles.deleteButton}>
+                  Delete
+                </button>
+              </section>
+            </div>
+          );
         })}
-      />
-      {/* add delete question */}
-      {uuids.map((uuid, index) => {
-        return <QuestionForm index={index} key={uuid} register={register} />;
-      })}
-      <div className={styles.bottomButtonsWrapper}>
-        <input type='submit' value='Submit' />
-        <button onClick={handleNewUuid}>New question</button>
-      </div>
-    </form>
+        <div className={styles.buttonWrapper}>
+          <button
+            type='button'
+            onClick={() =>
+              append({
+                question: "",
+                answer: "",
+              })
+            }>
+            Add new question
+          </button>
+          <input type='submit' value='Submit' />
+        </div>
+      </form>
+    </div>
   );
 }
