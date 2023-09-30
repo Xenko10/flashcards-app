@@ -16,7 +16,6 @@ export default function DeleteSetPage() {
       .catch((error) => {
         console.error("Error fetching sets:", error);
       });
-    console.log(sets);
   }, []);
 
   function deleteSet(set: string) {

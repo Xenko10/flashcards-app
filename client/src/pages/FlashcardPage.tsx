@@ -44,10 +44,6 @@ export default function FlashcardPage() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(qnaList);
-  }, [qnaList]);
-
   return (
     <div className={styles.main}>
       <div
