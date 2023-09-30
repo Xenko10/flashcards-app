@@ -6,8 +6,10 @@
   align-items: center;
 }
 
-.mainParagraph {
-  font-size: 1.75rem;
+.mainH1 {
+  font-size: 2.5rem;
+  color: #7c81ad;
+  margin-bottom: 2rem;
 }
 
 .links {
@@ -20,6 +22,6 @@
 
 .links > a {
   color: #7c81ad;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
 }

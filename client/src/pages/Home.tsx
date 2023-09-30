@@ -4,7 +4,7 @@ import styles from "./css/Home.module.css";
 export default function Home() {
   return (
     <div className={styles.main}>
-      <p className={styles.mainParagraph}>Select type of the event</p>
+      <h1 className={styles.mainH1}>Select type of the event</h1>
       <div className={styles.links}>
         <Link to='/createsetform' className={styles.mainGotoHome}>
           Create set
