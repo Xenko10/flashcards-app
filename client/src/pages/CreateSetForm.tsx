@@ -61,7 +61,7 @@ export default function CreateSetForm() {
                   />
                   <textarea
                     placeholder='answer'
-                    {...register(`qnaArray.${index}.answer` as const, {
+                    {...register(`qnaArray.${index}.answer`, {
                       required: true,
                       maxLength: 1000,
                     })}
