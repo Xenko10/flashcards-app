@@ -13,8 +13,9 @@ type FormValues = {
 };
 
 export default function CreateSetForm() {
-  const { register, control, handleSubmit, reset } = useForm<FormValues>({
+  const { register, control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
+      tableName: "",
       qnaArray: [{ question: "", answer: "" }],
     },
   });
@@ -22,14 +23,15 @@ export default function CreateSetForm() {
     name: "qnaArray",
     control,
   });
+
   const onSubmit = async (data: FormValues) => {
+    if (data.qnaArray.length === 0) return;
     try {
       const response = await axios.post("http://localhost:5174/insert", {
         qnaArray: data.qnaArray,
         tableName: data.tableName,
       });
       console.log(response.data);
-      reset();
     } catch (error) {
       console.error(error);
     }
@@ -38,9 +40,9 @@ export default function CreateSetForm() {
   return (
     <div className={styles.main}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <h1 className={styles.tableNameInfo}>Type name of the set: </h1>
+        <h1 className={styles.h1TableNameInfo}>Type name of the set: </h1>
         <textarea
-          placeholder='table name'
+          placeholder='set name'
           {...register("tableName", {
             required: true,
           })}
@@ -48,9 +50,11 @@ export default function CreateSetForm() {
         />
         {fields.map((field, index) => {
           return (
-            <div key={field.id}>
+            <div key={field.id} className={styles.questionWrapper}>
               <section className={styles.section} key={field.id}>
-                <h2>Question {index + 1}</h2>
+                <h2 className={styles.h2QuestionNumber}>
+                  Question {index + 1}
+                </h2>
                 <div className={styles.textareaWrapper}>
                   <textarea
                     placeholder='question'
