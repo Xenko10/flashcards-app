@@ -15,6 +15,9 @@ export default function Home() {
         <Link to='/editsetform' className={styles.mainGotoHome}>
           Edit set
         </Link>
+        <Link to='/deleteset' className={styles.mainGotoHome}>
+          Delete set
+        </Link>
       </div>
     </div>
   );
