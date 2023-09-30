@@ -8,7 +8,7 @@ To do:
 - [x] - Add questions.
 - [x] - Add answers.
 - [x] - Delete set.
-- [ ] - Editing set.
+- [x] - Editing set.
 
 2. Flashcards.
 
@@ -17,5 +17,8 @@ To do:
 
 3.  Other.
 
-- [ ] - Share sets to others.
-- [ ] - Import sets from others.
+- [ ] - Improve the website design.
+- [ ] - Fix bugs.
+- [ ] - Make app fully responsive.
+- [ ] - Add more form validation.
+- [ ] - Make export/import sets to others possible.
