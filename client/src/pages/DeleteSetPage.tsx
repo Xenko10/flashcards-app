@@ -16,14 +16,14 @@ export default function DeleteSetPage() {
       .catch((error) => {
         console.error("Error fetching sets:", error);
       });
+    console.log(sets);
   }, []);
 
   function deleteSet(set: string) {
-    axios.delete(`http://localhost:5174/delete/${set}`).then(() => {
-      setSets((prevSets) =>
-        prevSets.filter((prevSet: any) => prevSet.Tables_in_flashcards !== set)
-      );
-    });
+    axios.delete(`http://localhost:5174/delete/${set}`);
+    setSets((prevSets) =>
+      prevSets.filter((prevSet: any) => prevSet.Tables_in_flashcards !== set)
+    );
   }
 
   return (
