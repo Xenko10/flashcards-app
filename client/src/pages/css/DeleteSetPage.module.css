@@ -9,3 +9,7 @@
 .flashcardsText {
   font-size: 2.25rem;
 }
+
+.deleteSet {
+  cursor: pointer;
+}

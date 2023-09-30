@@ -1,3 +1,19 @@
-export default function DeleteSet({ set }: { set: string }) {
-  return <div>{set}</div>;
+import styles from "../css/DeleteSetPage.module.css";
+
+export default function DeleteSet({
+  set,
+  deleteSet,
+}: {
+  set: string;
+  deleteSet: any;
+}) {
+  return (
+    <div
+      onClick={() => {
+        deleteSet(set);
+      }}
+      className={styles.deleteSet}>
+      {set}
+    </div>
+  );
 }

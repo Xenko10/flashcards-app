@@ -28,7 +28,6 @@ const connection = mysql.createConnection({
 });
 
 app.post("/insert", (req, res) => {
-  console.log(req.body);
   connection.query(
     `CREATE TABLE IF NOT EXISTS ?? (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -54,6 +53,14 @@ app.post("/insert", (req, res) => {
   );
 });
 
+app.delete("/delete/:tableName", (req, res) => {
+  const tableName = req.params.tableName;
+  connection.query("DROP TABLE ??", [tableName], (err) => {
+    if (err) throw new Error(err);
+    console.log("Table deleted");
+  });
+});
+
 app.get("/getsets", (req, res) => {
   connection.query("show tables in ??", [database], (err, result) => {
     if (err) throw new Error(err);
@@ -63,10 +70,10 @@ app.get("/getsets", (req, res) => {
 });
 
 app.get("/getquestions/:flashcardId", (req, res) => {
-  const flsahcardId = req.params.flashcardId;
+  const flashcardId = req.params.flashcardId;
   connection.query(
     "SELECT question, answer FROM ??",
-    [flsahcardId],
+    [flashcardId],
     (err, result) => {
       if (err) throw new Error(err);
       const data = JSON.parse(JSON.stringify(result));

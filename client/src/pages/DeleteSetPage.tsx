@@ -18,11 +18,23 @@ export default function DeleteSetPage() {
       });
   }, []);
 
+  function deleteSet(set: string) {
+    axios.delete(`http://localhost:5174/delete/${set}`).then(() => {
+      setSets((prevSets) =>
+        prevSets.filter((prevSet: any) => prevSet.Tables_in_flashcards !== set)
+      );
+    });
+  }
+
   return (
     <div className={styles.main}>
       <div className={styles.flashcardsText}>Choose set to delete: </div>
       {sets.map((set: any) => (
-        <DeleteSet set={set.Tables_in_flashcards} key={uuidv4()} />
+        <DeleteSet
+          set={set.Tables_in_flashcards}
+          key={uuidv4()}
+          deleteSet={deleteSet}
+        />
       ))}
     </div>
   );
