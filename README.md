@@ -13,12 +13,8 @@ To do:
 
 a) Flashcards.
 
-- [ ] - When you start a flashcards quiz, there will be question, and after clicking it, question disappears and then answer appears.
-- [ ] - There will be button that will make render another question.
-
-b) Test.
-
-- [ ] - 1 question, 4 answers (1 correct, 3 wrong ones).
+- [ x ] - When you start a flashcards quiz, there will be question, and after clicking it, question disappears and then answer appears.
+- [ x ] - There will be button that will make render another question.
 
 3.  Other.
 

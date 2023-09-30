@@ -9,14 +9,11 @@ export default function Home() {
         <Link to='/createsetform' className={styles.mainGotoHome}>
           Create set
         </Link>
-        <Link to='/editsetform' className={styles.mainGotoHome}>
-          Edit set
-        </Link>
         <Link to='/flashcards' className={styles.mainGotoHome}>
           Use flashcards
         </Link>
-        <Link to='/takethetest' className={styles.mainGotoHome}>
-          Complete the test
+        <Link to='/editsetform' className={styles.mainGotoHome}>
+          Edit set
         </Link>
       </div>
     </div>
