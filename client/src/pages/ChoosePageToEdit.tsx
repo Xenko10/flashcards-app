@@ -1,10 +1,10 @@
+import styles from "./css/ChoosePageToEdit.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LinkComponent from "./pages_components/LinkComponent";
 import { v4 as uuidv4 } from "uuid";
-import styles from "./css/Flashcards.module.css";
+import LinkComponent from "./pages_components/LinkComponent";
 
-export default function Flashcards() {
+export default function ChoosePageToEdit() {
   const [sets, setSets] = useState([]);
 
   useEffect(() => {
@@ -17,15 +17,14 @@ export default function Flashcards() {
         console.error("Error fetching sets:", error);
       });
   }, []);
-
   return (
     <div className={styles.main}>
-      <div className={styles.flashcardsText}>Flashcards sets</div>
+      <h1>Choose page to edit </h1>
       {sets.map((set: any) => (
         <LinkComponent
           set={set.Tables_in_flashcards}
           key={uuidv4()}
-          page='flashcard'
+          page='editsetform'
         />
       ))}
     </div>

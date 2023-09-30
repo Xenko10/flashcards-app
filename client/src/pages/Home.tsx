@@ -12,7 +12,7 @@ export default function Home() {
         <Link to='/flashcards' className={styles.mainGotoHome}>
           Use flashcards
         </Link>
-        <Link to='/editsetform' className={styles.mainGotoHome}>
+        <Link to='/choosepagetoedit' className={styles.mainGotoHome}>
           Edit set
         </Link>
         <Link to='/deleteset' className={styles.mainGotoHome}>
