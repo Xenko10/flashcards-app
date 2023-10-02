@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .mainH1 {
@@ -13,15 +14,28 @@
 }
 
 .links {
-  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 4rem 0 5rem 0;
+}
 
-  display: flex;
-  justify-content: space-between;
-  margin: 4rem 5rem 5rem 5rem;
+@media (max-width: 500px) {
+  .links {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 300px) {
+  .links {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 
 .links > a {
   color: #7c81ad;
   font-size: 2rem;
   text-decoration: none;
+  margin: 1rem;
 }
