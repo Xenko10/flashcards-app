@@ -15,8 +15,19 @@
   font-weight: 500;
 }
 
-.main > a {
+.main > ul {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+.main > ul > li {
   font-size: 1.75rem;
-  text-decoration: none;
+  margin: 1rem 0;
+}
+
+.main > ul > li > a {
   color: #7c81ad;
+  text-decoration: none;
 }

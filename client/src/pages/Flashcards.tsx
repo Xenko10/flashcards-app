@@ -21,13 +21,15 @@ export default function Flashcards() {
   return (
     <div className={styles.main}>
       <h1 className={styles.flashcardsText}>Flashcards sets</h1>
-      {sets.map((set: any) => (
-        <LinkComponent
-          set={set.Tables_in_flashcards}
-          key={uuidv4()}
-          page='flashcard'
-        />
-      ))}
+      <ul>
+        {sets.map((set: any) => (
+          <LinkComponent
+            set={set.Tables_in_flashcards}
+            key={uuidv4()}
+            page='flashcard'
+          />
+        ))}
+      </ul>
     </div>
   );
 }
