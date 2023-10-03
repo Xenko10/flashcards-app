@@ -20,7 +20,7 @@ export default function Flashcards() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.flashcardsText}>Flashcards sets</div>
+      <h1 className={styles.flashcardsText}>Flashcards sets</h1>
       {sets.map((set: any) => (
         <LinkComponent
           set={set.Tables_in_flashcards}
