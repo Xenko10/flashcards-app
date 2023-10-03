@@ -20,13 +20,15 @@ export default function ChoosePageToEdit() {
   return (
     <div className={styles.main}>
       <h1>Choose page to edit </h1>
-      {sets.map((set: any) => (
-        <LinkComponent
-          set={set.Tables_in_flashcards}
-          key={uuidv4()}
-          page='editsetform'
-        />
-      ))}
+      <ul>
+        {sets.map((set: any) => (
+          <LinkComponent
+            set={set.Tables_in_flashcards}
+            key={uuidv4()}
+            page='editsetform'
+          />
+        ))}
+      </ul>
     </div>
   );
 }

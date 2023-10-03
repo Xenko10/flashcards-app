@@ -7,5 +7,9 @@ export default function LinkComponent({
   set: string;
   page: string;
 }) {
-  return <Link to={`/${page}/${set}`}>{set}</Link>;
+  return (
+    <li>
+      <Link to={`/${page}/${set}`}>{set}</Link>
+    </li>
+  );
 }
