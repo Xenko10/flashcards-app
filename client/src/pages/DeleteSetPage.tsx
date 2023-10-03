@@ -27,14 +27,16 @@ export default function DeleteSetPage() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.flashcardsText}>Choose set to delete: </div>
-      {sets.map((set: any) => (
-        <DeleteSet
-          set={set.Tables_in_flashcards}
-          key={uuidv4()}
-          deleteSet={deleteSet}
-        />
-      ))}
+      <h1 className={styles.flashcardsText}>Choose set to delete: </h1>
+      <ul>
+        {sets.map((set: any) => (
+          <DeleteSet
+            set={set.Tables_in_flashcards}
+            key={uuidv4()}
+            deleteSet={deleteSet}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

@@ -1,13 +1,33 @@
 .main {
+  font-family: "Roboto", sans-serif;
+
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 1.25rem;
 }
 
 .flashcardsText {
+  color: #7c81ad;
   font-size: 2.25rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.main > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.main > ul > li {
+  color: #7c81ad;
+  font-size: 1.5rem;
+  list-style: none;
+  margin: 1rem 0;
 }
 
 .deleteSet {

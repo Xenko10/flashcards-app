@@ -8,12 +8,12 @@ export default function DeleteSet({
   deleteSet: any;
 }) {
   return (
-    <div
+    <li
       onClick={() => {
         deleteSet(set);
       }}
       className={styles.deleteSet}>
       {set}
-    </div>
+    </li>
   );
 }
