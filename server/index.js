@@ -2,7 +2,6 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv";
-import bodyParser from "body-parser";
 
 dotenv.config();
 
@@ -11,7 +10,7 @@ const server_port = 5174;
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const host_name = process.env.HOST_NAME;
 const user = process.env.USER;
