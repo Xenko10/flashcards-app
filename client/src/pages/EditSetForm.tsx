@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import styles from "./css/EditSetForm.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface QnaItem {
   question: string;
@@ -15,7 +15,6 @@ type FormValues = {
 };
 export default function EditSetForm() {
   const { flashcardId } = useParams();
-  const [qnaList, setQnaList] = useState([{ question: "", answer: "" }]);
   const { register, control, handleSubmit, setValue } = useForm<FormValues>({
     defaultValues: {
       tableName: flashcardId,
@@ -27,14 +26,11 @@ export default function EditSetForm() {
     axios
       .get(`http://localhost:5174/getquestions/${flashcardId}`)
       .then((res: any) => {
-        setQnaList(res.data);
         setValue("qnaArray", res.data);
       })
       .catch((error) => {
         console.error("Error fetching sets:", error);
       });
-    console.log(flashcardId);
-    console.log(qnaList);
   }, [flashcardId, setValue]);
 
   const { fields, append, remove } = useFieldArray({
@@ -48,7 +44,7 @@ export default function EditSetForm() {
       axios.delete(`http://localhost:5174/delete/${flashcardId}`);
       const response = await axios.post("http://localhost:5174/insert", {
         qnaArray: data.qnaArray,
-        tableName: data.tableName,
+        tableName: flashcardId,
       });
       console.log(response.data);
     } catch (error) {
@@ -59,14 +55,7 @@ export default function EditSetForm() {
   return (
     <div className={styles.main}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <h1 className={styles.h1TableNameInfo}>Type name of the set: </h1>
-        <textarea
-          placeholder='set name'
-          {...register("tableName", {
-            required: true,
-          })}
-          className={styles.tableNameTextArea}
-        />
+        <h1 className={styles.h1TableNameInfo}>Editing: {flashcardId} set</h1>
         {fields.map((field, index) => {
           return (
             <div key={field.id} className={styles.questionWrapper}>
