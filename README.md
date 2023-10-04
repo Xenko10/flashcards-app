@@ -17,7 +17,7 @@ To do:
 
 3.  Other.
 
-- [ ] - Improve the website design.
+- [x] - Improve website design.
 - [ ] - Fix bugs.
 - [ ] - Make app fully responsive.
 - [ ] - Add more form validation.

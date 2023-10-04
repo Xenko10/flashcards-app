@@ -13,6 +13,7 @@ type FormValues = {
   tableName: string;
   qnaArray: QnaItem[];
 };
+
 export default function EditSetForm() {
   const { flashcardId } = useParams();
   const { register, control, handleSubmit, setValue } = useForm<FormValues>({
