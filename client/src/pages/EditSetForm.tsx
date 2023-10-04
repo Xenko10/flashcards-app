@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import styles from "./css/EditSetForm.module.css";
@@ -15,6 +15,7 @@ type FormValues = {
 };
 
 export default function EditSetForm() {
+  const navigate = useNavigate();
   const { flashcardId } = useParams();
   const { register, control, handleSubmit, setValue } = useForm<FormValues>({
     defaultValues: {
@@ -39,15 +40,15 @@ export default function EditSetForm() {
     control,
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = (data: FormValues) => {
     if (data.qnaArray.length === 0) return;
     try {
       axios.delete(`http://localhost:5174/delete/${flashcardId}`);
-      const response = await axios.post("http://localhost:5174/insert", {
+      axios.post("http://localhost:5174/insert", {
         qnaArray: data.qnaArray,
         tableName: flashcardId,
       });
-      console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }

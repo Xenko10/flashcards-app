@@ -1,6 +1,7 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import styles from "./css/CreateSetForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 interface QnaItem {
   question: string;
@@ -13,6 +14,7 @@ type FormValues = {
 };
 
 export default function CreateSetForm() {
+  const navigate = useNavigate();
   const { register, control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       tableName: "",
@@ -24,14 +26,14 @@ export default function CreateSetForm() {
     control,
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = (data: FormValues) => {
     if (data.qnaArray.length === 0) return;
     try {
-      const response = await axios.post("http://localhost:5174/insert", {
+      axios.post("http://localhost:5174/insert", {
         qnaArray: data.qnaArray,
         tableName: data.tableName,
       });
-      console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
