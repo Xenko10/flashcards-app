@@ -19,7 +19,7 @@ export default function ChoosePageToEdit() {
   }, []);
   return (
     <div className={styles.main}>
-      <h1>Choose page to edit </h1>
+      <h1 className={styles.pageToEditText}>Choose page to edit </h1>
       <ul>
         {sets.map((set: any) => (
           <LinkComponent
