@@ -5,7 +5,7 @@
   display: grid;
   justify-content: center;
   text-align: center;
-  gap: 1.25rem;
+  padding-bottom: 2rem;
 }
 
 .flashcardsText {
