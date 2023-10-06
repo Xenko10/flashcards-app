@@ -17,7 +17,7 @@ To do:
 
 3.  Other.
 
-- [x] - Improve website design.
+- [ ] - Improve website design (make using flashcard prettier).
 - [ ] - Fix bugs and other things ( show error when you want to create set that already exists [ same table name], use app.put instead of deleting and creating new table when editing set ).
 - [ ] - Make app fully responsive.
 - [ ] - Add more form validation.
