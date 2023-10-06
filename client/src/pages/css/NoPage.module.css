@@ -1,20 +1,19 @@
 .main {
   font-family: "Roboto", sans-serif;
   color: #7c81ad;
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   text-align: center;
+  padding-bottom: 2rem;
 }
 
 .mainGoToHome {
   color: #7c81ad;
-
   margin-top: 1rem;
-
   font-size: 2rem;
   text-decoration: none;
 }
