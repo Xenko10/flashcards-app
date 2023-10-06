@@ -4,10 +4,10 @@ import Header from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CreateSetForm from "./pages/CreateSetForm";
-import Flashcards from "./pages/Flashcards";
+import Flashcards from "./pages/ChooseFlashcardSet";
 import ChoosePageToEdit from "./pages/ChoosePageToEdit";
 import EditSetForm from "./pages/EditSetForm";
-import FlashcardPage from "./pages/FlashcardPage";
+import FlashcardPage from "./pages/UseFlashcardSet";
 import NoPage from "./pages/NoPage";
 import DeleteSetPage from "./pages/DeleteSetPage";
 

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
-import styles from "./css/FlashcardPage.module.css";
+import styles from "./css/UseFlashcardSet.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
