@@ -18,7 +18,7 @@ To do:
 3.  Other.
 
 - [x] - Improve website design.
-- [ ] - Fix bugs.
+- [ ] - Fix bugs and other things ( show error when you want to create set that already exists [ same table name], use app.put instead of deleting and creating new table when editing set ).
 - [ ] - Make app fully responsive.
 - [ ] - Add more form validation.
 - [ ] - Make export/import sets to others possible.
