@@ -31,7 +31,7 @@ export default function DeleteSetPage() {
       <ul>
         {sets.map((set: any) => (
           <DeleteSet
-            set={set.Tables_in_flashcards}
+            setName={set.Tables_in_flashcards}
             key={uuidv4()}
             deleteSet={deleteSet}
           />

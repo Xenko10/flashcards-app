@@ -34,3 +34,15 @@
 .deleteSet {
   cursor: pointer;
 }
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* Specify the width with units (e.g., px) */
+  background-color: #ffffff; /* Use background-color instead of bgcolor */
+  border: 2px solid #000;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2); /* Correct the property name and add shadow values */
+  padding: 16px; /* Use padding instead of p */
+}
