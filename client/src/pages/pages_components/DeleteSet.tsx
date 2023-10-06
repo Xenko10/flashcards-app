@@ -1,6 +1,8 @@
 import styles from "../css/DeleteSetPage.module.css";
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 export default function DeleteSet({
   setName,
@@ -13,26 +15,31 @@ export default function DeleteSet({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <li className={styles.deleteSet} onClick={handleOpen}>
-      {setName}
+    <>
+      <li className={styles.deleteSet} onClick={handleOpen}>
+        {setName}
+      </li>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-        component='div'
-        children={
-          <div className={styles.modal}>
-            <p>Are you sure you want to delete {setName} set?</p>
-            <div
+        aria-describedby='modal-modal-description'>
+        <Box className={styles.modal}>
+          <div className={styles.paragraphButtonWrapper}>
+            <p>
+              Are you sure you want to delete set called{" "}
+              <span className={styles.underline}>{setName}</span>?
+            </p>
+            <Button
               onClick={() => {
                 deleteSet(setName);
               }}>
               Yes
-            </div>
+            </Button>
           </div>
-        }
-      />
-    </li>
+        </Box>
+      </Modal>
+    </>
   );
 }
