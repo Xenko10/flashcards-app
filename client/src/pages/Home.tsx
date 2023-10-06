@@ -15,7 +15,7 @@ export default function Home() {
         <Link to='/choosepagetoedit' className={styles.mainGotoHome}>
           Edit set
         </Link>
-        <Link to='/deleteset' className={styles.mainGotoHome}>
+        <Link to='/choosesettodelete' className={styles.mainGotoHome}>
           Delete set
         </Link>
       </div>

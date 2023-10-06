@@ -1,10 +1,10 @@
-import styles from "./css/DeleteSetPage.module.css";
+import styles from "./css/ChooseSetToDelete.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import DeleteSet from "./pages_components/DeleteSet";
 
-export default function DeleteSetPage() {
+export default function ChooseSetToDelete() {
   const [sets, setSets] = useState([]);
 
   useEffect(() => {

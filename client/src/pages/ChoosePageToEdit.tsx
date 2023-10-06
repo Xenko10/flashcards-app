@@ -2,7 +2,7 @@ import styles from "./css/ChoosePageToEdit.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import LinkComponent from "./pages_components/Link";
+import LinkComponent from "./pages_components/LinkComponent";
 
 export default function ChoosePageToEdit() {
   const [sets, setSets] = useState([]);

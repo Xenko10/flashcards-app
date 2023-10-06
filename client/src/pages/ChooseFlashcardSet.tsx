@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LinkComponent from "./pages_components/Link";
+import LinkComponent from "./pages_components/LinkComponent";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./css/ChooseFlashcardSet.module.css";
 
-export default function Flashcards() {
+export default function ChooseFlashcardSet() {
   const [sets, setSets] = useState([]);
 
   useEffect(() => {
