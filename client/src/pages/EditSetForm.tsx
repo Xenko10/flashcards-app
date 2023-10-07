@@ -61,33 +61,29 @@ export default function EditSetForm() {
         {fields.map((field, index) => {
           return (
             <div key={field.id} className={styles.questionWrapper}>
-              <section className={styles.section} key={field.id}>
-                <h2 className={styles.h2QuestionNumber}>
-                  Question {index + 1}
-                </h2>
-                <div className={styles.textareaWrapper}>
-                  <textarea
-                    placeholder='question'
-                    {...register(`qnaArray.${index}.question`, {
-                      required: true,
-                      maxLength: 1000,
-                    })}
-                  />
-                  <textarea
-                    placeholder='answer'
-                    {...register(`qnaArray.${index}.answer`, {
-                      required: true,
-                      maxLength: 1000,
-                    })}
-                  />
-                </div>
-                <button
-                  type='button'
-                  onClick={() => remove(index)}
-                  className={styles.deleteButton}>
-                  Delete
-                </button>
-              </section>
+              <h2 className={styles.h2QuestionNumber}>Question {index + 1}</h2>
+              <div className={styles.textareaWrapper}>
+                <textarea
+                  placeholder='question'
+                  {...register(`qnaArray.${index}.question`, {
+                    required: true,
+                    maxLength: 1000,
+                  })}
+                />
+                <textarea
+                  placeholder='answer'
+                  {...register(`qnaArray.${index}.answer`, {
+                    required: true,
+                    maxLength: 1000,
+                  })}
+                />
+              </div>
+              <button
+                type='button'
+                onClick={() => remove(index)}
+                className={styles.deleteButton}>
+                Delete
+              </button>
             </div>
           );
         })}
