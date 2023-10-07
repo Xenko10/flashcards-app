@@ -2,6 +2,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import styles from "./css/CreateSetForm.module.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 interface QnaItem {
   question: string;
@@ -26,16 +27,54 @@ export default function CreateSetForm() {
     control,
   });
 
-  const onSubmit = (data: FormValues) => {
-    if (data.qnaArray.length === 0) return;
-    try {
-      axios.post("http://localhost:5174/insert", {
-        qnaArray: data.qnaArray,
-        tableName: data.tableName,
+  const [setsName, setSetsName] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5174/getsets")
+      .then((res: any) => {
+        setSetsName(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching sets:", error);
       });
-      navigate("/");
-    } catch (error) {
-      console.error(error);
+  }, []);
+
+  function validate(tableName: string, arrayLength: number) {
+    if (tableName === "") {
+      setError("You must type name of the set");
+      return false;
+    }
+    if (arrayLength === 0) {
+      setError("You must add at least one question and answer");
+      return false;
+    }
+    if (
+      setsName
+        .map((setNameObject: any) => setNameObject.Tables_in_flashcards)
+        .includes(tableName)
+    ) {
+      setError("This set name already exists");
+      return false;
+    }
+    return true;
+  }
+
+  const onSubmit = (data: FormValues) => {
+    const tableName = data.tableName;
+    const arrayLength = data.qnaArray.length;
+    const isValid = validate(tableName, arrayLength);
+    if (isValid) {
+      try {
+        axios.post("http://localhost:5174/insert", {
+          qnaArray: data.qnaArray,
+          tableName: tableName,
+        });
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -45,11 +84,10 @@ export default function CreateSetForm() {
         <h1 className={styles.h1TableNameInfo}>Type name of the set: </h1>
         <textarea
           placeholder='set name'
-          {...register("tableName", {
-            required: true,
-          })}
+          {...register("tableName")}
           className={styles.tableNameTextArea}
         />
+        {error && <p className={styles.error}>{error}</p>}
         {fields.map((field, index) => {
           return (
             <div key={field.id} className={styles.questionWrapper}>
