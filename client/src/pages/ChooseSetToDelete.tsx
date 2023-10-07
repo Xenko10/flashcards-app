@@ -4,14 +4,18 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import DeleteSet from "./pages_components/DeleteSet";
 
+type setNameObject = {
+  Tables_in_flashcards: string;
+};
+
 export default function ChooseSetToDelete() {
-  const [sets, setSets] = useState([]);
+  const [setsName, setSetsName] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:5174/getsets")
       .then((res: any) => {
-        setSets(res.data);
+        setSetsName(res.data);
       })
       .catch((error) => {
         console.error("Error fetching sets:", error);
@@ -20,8 +24,10 @@ export default function ChooseSetToDelete() {
 
   function deleteSet(set: string) {
     axios.delete(`http://localhost:5174/delete/${set}`);
-    setSets((prevSets) =>
-      prevSets.filter((prevSet: any) => prevSet.Tables_in_flashcards !== set)
+    setSetsName((prevSetsName) =>
+      prevSetsName.filter(
+        (prevSetName: setNameObject) => prevSetName.Tables_in_flashcards !== set
+      )
     );
   }
 
@@ -29,9 +35,9 @@ export default function ChooseSetToDelete() {
     <div className={styles.main}>
       <h1 className={styles.flashcardsText}>Choose set to delete: </h1>
       <ul>
-        {sets.map((set: any) => (
+        {setsName.map((setNameObject: setNameObject) => (
           <DeleteSet
-            setName={set.Tables_in_flashcards}
+            setName={setNameObject.Tables_in_flashcards}
             key={uuidv4()}
             deleteSet={deleteSet}
           />
