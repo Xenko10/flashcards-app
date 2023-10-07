@@ -4,12 +4,15 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .content {
   font-size: 3rem;
 }
 
-.arrowsWrapper {
+.arrowsCountWrapper {
+  display: flex;
+  align-items: center;
   margin-top: 2rem;
 }
