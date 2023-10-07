@@ -29,6 +29,10 @@
   user-select: none;
 }
 
+.remainingQuestions {
+  font-size: 1.25rem;
+}
+
 @media (max-width: 450px) {
   .content {
     width: 15.625rem;

@@ -73,7 +73,7 @@ export default function UseFlashcardSet() {
           }
           viewBox='-6 0 24 24'
         />
-        <div>
+        <div className={styles.remainingQuestions}>
           {count + 1} / {qnaList.length}
         </div>
         <ArrowForwardIosIcon
