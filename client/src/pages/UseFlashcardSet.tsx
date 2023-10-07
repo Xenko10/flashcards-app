@@ -69,6 +69,7 @@ export default function UseFlashcardSet() {
                 }
               : () => {}
           }
+          viewBox='-6 0 24 24'
         />
         <div>
           {count + 1} / {qnaList.length}
