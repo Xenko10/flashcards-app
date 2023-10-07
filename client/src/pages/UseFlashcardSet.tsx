@@ -7,7 +7,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 interface Action {
   type: string;
-  payload?: { amount: number };
 }
 
 const ACTIONS = {
