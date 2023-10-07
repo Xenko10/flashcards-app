@@ -29,6 +29,14 @@
   user-select: none;
 }
 
+@media (max-width: 450px) {
+  .content {
+    width: 15.625rem;
+    height: 8rem;
+    padding: 1rem;
+  }
+}
+
 .question,
 .answer {
   transform-style: preserve-3d;
