@@ -12,17 +12,14 @@ export default function DeleteSet({
   deleteSet: any;
 }) {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   return (
     <>
-      <li className={styles.deleteSet} onClick={handleOpen}>
+      <li className={styles.deleteSet} onClick={() => setOpen(true)}>
         {setName}
       </li>
-
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'>
         <Box className={styles.modal}>
@@ -31,12 +28,7 @@ export default function DeleteSet({
               Are you sure you want to delete set called{" "}
               <span className={styles.underline}>{setName}</span>?
             </p>
-            <Button
-              onClick={() => {
-                deleteSet(setName);
-              }}>
-              Yes
-            </Button>
+            <Button onClick={() => deleteSet(setName)}>Yes</Button>
           </div>
         </Box>
       </Modal>
