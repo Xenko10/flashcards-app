@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
 export default function LinkComponent({
-  set,
+  setName,
   page,
 }: {
-  set: string;
+  setName: string;
   page: string;
 }) {
   return (
     <li>
-      <Link to={`/${page}/${set}`}>{set}</Link>
+      <Link to={`/${page}/${setName}`}>{setName}</Link>
     </li>
   );
 }

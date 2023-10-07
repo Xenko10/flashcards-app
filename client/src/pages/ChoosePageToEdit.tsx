@@ -23,7 +23,7 @@ export default function ChoosePageToEdit() {
       <ul>
         {sets.map((set: any) => (
           <LinkComponent
-            set={set.Tables_in_flashcards}
+            setName={set.Tables_in_flashcards}
             key={uuidv4()}
             page='editsetform'
           />
