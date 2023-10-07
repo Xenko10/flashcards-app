@@ -62,7 +62,7 @@ export default function UseFlashcardSet() {
       </div>
       <div className={styles.arrowsCountWrapper}>
         <ArrowBackIosIcon
-          className={styles.arrow}
+          className={count === 0 ? undefined : styles.arrowActive}
           color={count === 0 ? "disabled" : undefined}
           onClick={
             count > 0
@@ -78,7 +78,9 @@ export default function UseFlashcardSet() {
           {count + 1} / {qnaList.length}
         </div>
         <ArrowForwardIosIcon
-          className={styles.arrow}
+          className={
+            count === qnaList.length - 1 ? undefined : styles.arrowActive
+          }
           color={count === qnaList.length - 1 ? "disabled" : undefined}
           onClick={
             count < qnaList.length - 1

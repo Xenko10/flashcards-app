@@ -29,13 +29,6 @@
   user-select: none;
 }
 
-.arrowsCountWrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 1rem;
-}
-
 .question,
 .answer {
   transform-style: preserve-3d;
@@ -44,4 +37,15 @@
 
 .answer {
   transform: rotateX(360deg);
+}
+
+.arrowsCountWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.arrowActive {
+  cursor: pointer;
 }
