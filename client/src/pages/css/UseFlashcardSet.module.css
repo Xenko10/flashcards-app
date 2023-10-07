@@ -8,11 +8,40 @@
 }
 
 .content {
-  font-size: 3rem;
+  cursor: pointer;
+
+  font-size: 2rem;
+  background-color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  width: 20rem;
+  height: 10rem;
+  padding: 3rem;
+  margin: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .arrowsCountWrapper {
   display: flex;
   align-items: center;
   margin-top: 2rem;
+  gap: 1rem;
+}
+
+.question,
+.answer {
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+
+.answer {
+  transform: rotateX(360deg);
 }

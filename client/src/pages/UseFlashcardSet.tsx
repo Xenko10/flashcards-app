@@ -47,7 +47,10 @@ export default function UseFlashcardSet() {
   return (
     <div className={styles.main}>
       <div
-        className={styles.content}
+        className={
+          `${styles.content}` +
+          ` ${isQuestion ? styles.question : styles.answer}`
+        }
         onClick={() => {
           setIsQuestion(!isQuestion);
         }}>
