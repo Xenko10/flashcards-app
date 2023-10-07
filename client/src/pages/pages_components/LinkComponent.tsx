@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function LinkComponent({
   setName,
-  page,
+  subpageName,
 }: {
   setName: string;
-  page: string;
+  subpageName: string;
 }) {
   return (
     <li>
-      <Link to={`/${page}/${setName}`}>{setName}</Link>
+      <Link to={`/${subpageName}/${setName}`}>{setName}</Link>
     </li>
   );
 }

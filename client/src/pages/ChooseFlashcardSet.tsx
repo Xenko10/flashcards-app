@@ -26,7 +26,7 @@ export default function ChooseFlashcardSet() {
           <LinkComponent
             setName={set.Tables_in_flashcards}
             key={uuidv4()}
-            page='flashcard'
+            subpageName='flashcard'
           />
         ))}
       </ul>
