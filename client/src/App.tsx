@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Navbar";
-import Footer from "./components/Footer";
+import Header from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import CreateSetForm from "./pages/CreateSetForm";
 import Flashcards from "./pages/ChooseFlashcardSet";
