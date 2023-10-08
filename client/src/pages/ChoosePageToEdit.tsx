@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import LinkComponent from "./pages_components/LinkComponent";
+import { API_URL } from "../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;
@@ -13,7 +14,7 @@ export default function ChoosePageToEdit() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/sets")
+      .get(`${API_URL}/sets`)
       .then((res) => {
         setSetsName(res.data);
       })

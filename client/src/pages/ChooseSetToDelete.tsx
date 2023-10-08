@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import DeleteSet from "./pages_components/DeleteSet";
+import { API_URL } from "../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;
@@ -13,7 +14,7 @@ export default function ChooseSetToDelete() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/sets")
+      .get(`${API_URL}/sets`)
       .then((res) => {
         setSetsName(res.data);
       })
@@ -23,7 +24,7 @@ export default function ChooseSetToDelete() {
   }, []);
 
   function deleteSet(set: string) {
-    axios.delete(`http://localhost:5174/set/${set}`);
+    axios.delete(`${API_URL}/set/${set}`);
     setSetsName((prevSetsName) =>
       prevSetsName.filter(
         (prevSetName) => prevSetName.Tables_in_flashcards !== set

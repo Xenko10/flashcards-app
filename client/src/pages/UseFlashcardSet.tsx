@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./css/UseFlashcardSet.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { API_URL } from "../constant";
 
 interface Action {
   type: string;
@@ -33,7 +34,7 @@ export default function UseFlashcardSet() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5174/set/${flashcardId}`)
+      .get(`${API_URL}/set/${flashcardId}`)
       .then((res) => {
         setQnaList(res.data);
       })

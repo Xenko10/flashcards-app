@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "./css/CreateSetForm.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { API_URL } from "../constant";
 
 interface QnaItem {
   question: string;
@@ -31,7 +32,7 @@ export default function CreateSetForm() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/sets")
+      .get(`${API_URL}/sets`)
       .then((res) => {
         setSetsName(res.data);
       })
@@ -66,7 +67,7 @@ export default function CreateSetForm() {
     const isValid = validate(tableName, arrayLength);
     if (isValid) {
       try {
-        axios.post("http://localhost:5174/set", {
+        axios.post(`${API_URL}/set`, {
           qnaArray: data.qnaArray,
           tableName: tableName,
         });

@@ -3,6 +3,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
 import styles from "./css/EditSetForm.module.css";
 import { useEffect } from "react";
+import { API_URL } from "../constant";
 
 interface QnaItem {
   question: string;
@@ -26,7 +27,7 @@ export default function EditSetForm() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5174/set/${flashcardId}`)
+      .get(`${API_URL}/set/${flashcardId}`)
       .then((res) => {
         setValue("qnaArray", res.data);
       })
@@ -43,8 +44,8 @@ export default function EditSetForm() {
   const onSubmit = (data: FormValues) => {
     if (data.qnaArray.length === 0) return;
     try {
-      axios.delete(`http://localhost:5174/set/${flashcardId}`);
-      axios.post("http://localhost:5174/set", {
+      axios.delete(`${API_URL}/set/${flashcardId}`);
+      axios.post(`${API_URL}/set`, {
         qnaArray: data.qnaArray,
         tableName: flashcardId,
       });

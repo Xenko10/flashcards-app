@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LinkComponent from "./pages_components/LinkComponent";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./css/ChooseFlashcardSet.module.css";
+import { API_URL } from "../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;
@@ -13,7 +14,7 @@ export default function ChooseFlashcardSet() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/sets")
+      .get(`${API_URL}/sets`)
       .then((res: any) => {
         setSetsName(res.data);
       })
