@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import LinkComponent from "./pages_components/LinkComponent";
-import { v4 as uuidv4 } from "uuid";
 import styles from "./css/ChooseFlashcardSet.module.css";
 import { API_URL } from "../constant";
 
@@ -30,7 +29,7 @@ export default function ChooseFlashcardSet() {
         {setsName.map((setNameObject) => (
           <LinkComponent
             setName={setNameObject.Tables_in_flashcards}
-            key={uuidv4()}
+            key={setNameObject.Tables_in_flashcards}
             subpageName='flashcard'
           />
         ))}

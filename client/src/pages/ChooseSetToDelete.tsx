@@ -1,7 +1,6 @@
 import styles from "./css/ChooseSetToDelete.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import DeleteSet from "./pages_components/DeleteSet";
 import { API_URL } from "../constant";
 
@@ -39,7 +38,7 @@ export default function ChooseSetToDelete() {
         {setsName.map((setNameObject) => (
           <DeleteSet
             setName={setNameObject.Tables_in_flashcards}
-            key={uuidv4()}
+            key={setNameObject.Tables_in_flashcards}
             deleteSet={deleteSet}
           />
         ))}

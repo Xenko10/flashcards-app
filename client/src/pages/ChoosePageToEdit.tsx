@@ -1,7 +1,6 @@
 import styles from "./css/ChoosePageToEdit.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import LinkComponent from "./pages_components/LinkComponent";
 import { API_URL } from "../constant";
 
@@ -29,7 +28,7 @@ export default function ChoosePageToEdit() {
         {setsName.map((setNameObject) => (
           <LinkComponent
             setName={setNameObject.Tables_in_flashcards}
-            key={uuidv4()}
+            key={setNameObject.Tables_in_flashcards}
             subpageName='edit-set-form'
           />
         ))}
