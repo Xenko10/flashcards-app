@@ -38,8 +38,11 @@ app.post("/set", (req, res) => {
   )`,
     [tableName],
     (err) => {
-      if (err) throw new Error(err);
-      console.log("Table created/exists");
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Table created/exists");
+      }
     }
   );
   connection.query(
@@ -58,16 +61,22 @@ app.post("/set", (req, res) => {
 app.delete("/set/:tableName", (req, res) => {
   const tableName = req.params.tableName;
   connection.query("DROP TABLE ??", [tableName], (err) => {
-    if (err) throw new Error(err);
-    console.log("Table deleted");
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Table deleted");
+    }
   });
 });
 
 app.get("/sets", (req, res) => {
   connection.query("show tables in ??", [databaseName], (err, result) => {
-    if (err) throw new Error(err);
-    const data = JSON.parse(JSON.stringify(result));
-    res.send(data);
+    if (err) {
+      console.log(err);
+    } else {
+      const data = JSON.parse(JSON.stringify(result));
+      res.send(data);
+    }
   });
 });
 
@@ -77,9 +86,12 @@ app.get("/set/:tableName", (req, res) => {
     "SELECT question, answer FROM ??",
     [tableName],
     (err, result) => {
-      if (err) throw new Error(err);
-      const data = JSON.parse(JSON.stringify(result));
-      res.send(data);
+      if (err) {
+        console.log(err);
+      } else {
+        const data = JSON.parse(JSON.stringify(result));
+        res.send(data);
+      }
     }
   );
 });
