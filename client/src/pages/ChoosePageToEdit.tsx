@@ -29,7 +29,7 @@ export default function ChoosePageToEdit() {
           <LinkComponent
             setName={setNameObject.Tables_in_flashcards}
             key={uuidv4()}
-            subpageName='editsetform'
+            subpageName='edit-set-form'
           />
         ))}
       </ul>

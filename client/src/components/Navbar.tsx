@@ -8,7 +8,7 @@ export default function Header() {
         Flashcards
       </Link>
       <ul>
-        <CustomLink to='/createsetform'>Create Set</CustomLink>
+        <CustomLink to='/create-set-form'>Create Set</CustomLink>
         <CustomLink to='/flashcards'>Flashcards</CustomLink>
       </ul>
     </nav>

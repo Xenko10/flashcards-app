@@ -18,10 +18,10 @@ export default function App() {
       <Routes>
         <Route path='/' index element={<Home />} />
         <Route path='/flashcards' element={<Flashcards />} />
-        <Route path='/createsetform' element={<CreateSetForm />} />
-        <Route path='/choosepagetoedit' element={<ChoosePageToEdit />} />
-        <Route path='/editsetform/:flashcardId' element={<EditSetForm />} />
-        <Route path='/choosesettodelete' element={<ChooseSetToDelete />} />
+        <Route path='/create-set-form' element={<CreateSetForm />} />
+        <Route path='/choose-page-to-edit' element={<ChoosePageToEdit />} />
+        <Route path='/edit-set-form/:flashcardId' element={<EditSetForm />} />
+        <Route path='/choose-set-to-delete' element={<ChooseSetToDelete />} />
         <Route path='/flashcard/:flashcardId' element={<FlashcardPage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>

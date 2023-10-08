@@ -6,10 +6,10 @@ export default function Home() {
     <div className={styles.main}>
       <h1 className={styles.homeText}>What you wanna do?</h1>
       <div className={styles.links}>
-        <Link to='/createsetform'>Create set</Link>
+        <Link to='/create-set-form'>Create set</Link>
         <Link to='/flashcards'>Use flashcards</Link>
-        <Link to='/choosepagetoedit'>Edit set</Link>
-        <Link to='/choosesettodelete'>Delete set</Link>
+        <Link to='/choose-page-to-edit'>Edit set</Link>
+        <Link to='/choose-set-to-delete'>Delete set</Link>
       </div>
     </div>
   );
