@@ -59,35 +59,33 @@ export default function EditSetForm() {
     <div className={styles.main}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h1 className={styles.h1TableNameInfo}>Editing: {flashcardId} set</h1>
-        {fields.map((field, index) => {
-          return (
-            <div key={field.id} className={styles.questionWrapper}>
-              <h2 className={styles.h2QuestionNumber}>Question {index + 1}</h2>
-              <div className={styles.textareaWrapper}>
-                <textarea
-                  placeholder='question'
-                  {...register(`qnaArray.${index}.question`, {
-                    required: true,
-                    maxLength: 1000,
-                  })}
-                />
-                <textarea
-                  placeholder='answer'
-                  {...register(`qnaArray.${index}.answer`, {
-                    required: true,
-                    maxLength: 1000,
-                  })}
-                />
-              </div>
-              <button
-                type='button'
-                onClick={() => remove(index)}
-                className={styles.deleteButton}>
-                Delete
-              </button>
+        {fields.map((field, index) => (
+          <div key={field.id} className={styles.questionWrapper}>
+            <h2 className={styles.h2QuestionNumber}>Question {index + 1}</h2>
+            <div className={styles.textareaWrapper}>
+              <textarea
+                placeholder='question'
+                {...register(`qnaArray.${index}.question`, {
+                  required: true,
+                  maxLength: 1000,
+                })}
+              />
+              <textarea
+                placeholder='answer'
+                {...register(`qnaArray.${index}.answer`, {
+                  required: true,
+                  maxLength: 1000,
+                })}
+              />
             </div>
-          );
-        })}
+            <button
+              type='button'
+              onClick={() => remove(index)}
+              className={styles.deleteButton}>
+              Delete
+            </button>
+          </div>
+        ))}
         <div className={styles.buttonWrapper}>
           <button
             type='button'
