@@ -13,7 +13,7 @@ export default function ChooseFlashcardSet() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/getsets")
+      .get("http://localhost:5174/sets")
       .then((res: any) => {
         setSetsName(res.data);
       })

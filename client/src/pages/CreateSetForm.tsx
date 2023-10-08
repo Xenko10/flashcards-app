@@ -31,8 +31,8 @@ export default function CreateSetForm() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/getsets")
-      .then((res: any) => {
+      .get("http://localhost:5174/sets")
+      .then((res) => {
         setSetsName(res.data);
       })
       .catch((error) => {
@@ -66,7 +66,7 @@ export default function CreateSetForm() {
     const isValid = validate(tableName, arrayLength);
     if (isValid) {
       try {
-        axios.post("http://localhost:5174/insert", {
+        axios.post("http://localhost:5174/set", {
           qnaArray: data.qnaArray,
           tableName: tableName,
         });

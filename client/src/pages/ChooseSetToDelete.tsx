@@ -13,7 +13,7 @@ export default function ChooseSetToDelete() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5174/getsets")
+      .get("http://localhost:5174/sets")
       .then((res: any) => {
         setSetsName(res.data);
       })
@@ -23,7 +23,7 @@ export default function ChooseSetToDelete() {
   }, []);
 
   function deleteSet(set: string) {
-    axios.delete(`http://localhost:5174/delete/${set}`);
+    axios.delete(`http://localhost:5174/set/${set}`);
     setSetsName((prevSetsName) =>
       prevSetsName.filter(
         (prevSetName: setNameObject) => prevSetName.Tables_in_flashcards !== set

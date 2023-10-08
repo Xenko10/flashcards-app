@@ -26,7 +26,7 @@ export default function EditSetForm() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5174/getquestions/${flashcardId}`)
+      .get(`http://localhost:5174/set/${flashcardId}`)
       .then((res: any) => {
         setValue("qnaArray", res.data);
       })
@@ -43,8 +43,8 @@ export default function EditSetForm() {
   const onSubmit = (data: FormValues) => {
     if (data.qnaArray.length === 0) return;
     try {
-      axios.delete(`http://localhost:5174/delete/${flashcardId}`);
-      axios.post("http://localhost:5174/insert", {
+      axios.delete(`http://localhost:5174/set/${flashcardId}`);
+      axios.post("http://localhost:5174/set", {
         qnaArray: data.qnaArray,
         tableName: flashcardId,
       });

@@ -26,7 +26,7 @@ const connection = mysql.createConnection({
   port: databasePort,
 });
 
-app.post("/insert", (req, res) => {
+app.post("/set", (req, res) => {
   const tableName = req.body.tableName;
   const dataArray = req.body.qnaArray;
   const values = dataArray.map((item) => [item.question, item.answer]);
@@ -55,7 +55,7 @@ app.post("/insert", (req, res) => {
   );
 });
 
-app.delete("/delete/:tableName", (req, res) => {
+app.delete("/set/:tableName", (req, res) => {
   const tableName = req.params.tableName;
   connection.query("DROP TABLE ??", [tableName], (err) => {
     if (err) throw new Error(err);
@@ -63,7 +63,7 @@ app.delete("/delete/:tableName", (req, res) => {
   });
 });
 
-app.get("/getsets", (req, res) => {
+app.get("/sets", (req, res) => {
   connection.query("show tables in ??", [databaseName], (err, result) => {
     if (err) throw new Error(err);
     const data = JSON.parse(JSON.stringify(result));
@@ -71,11 +71,11 @@ app.get("/getsets", (req, res) => {
   });
 });
 
-app.get("/getquestions/:flashcardId", (req, res) => {
-  const flashcardId = req.params.flashcardId;
+app.get("/set/:tableName", (req, res) => {
+  const tableName = req.params.tableName;
   connection.query(
     "SELECT question, answer FROM ??",
-    [flashcardId],
+    [tableName],
     (err, result) => {
       if (err) throw new Error(err);
       const data = JSON.parse(JSON.stringify(result));

@@ -33,7 +33,7 @@ export default function UseFlashcardSet() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5174/getquestions/${flashcardId}`)
+      .get(`http://localhost:5174/set/${flashcardId}`)
       .then((res: any) => {
         setQnaList(res.data);
       })
