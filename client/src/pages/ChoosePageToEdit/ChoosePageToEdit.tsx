@@ -1,8 +1,8 @@
-import styles from "./css/ChoosePageToEdit.module.css";
+import styles from "./ChoosePageToEdit.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LinkComponent from "./pages_components/LinkComponent";
-import { API_URL } from "../constant";
+import LinkComponent from "../../components/LinkComponent";
+import { API_URL } from "../../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;

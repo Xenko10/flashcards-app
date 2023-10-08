@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LinkComponent from "./pages_components/LinkComponent";
-import styles from "./css/ChooseFlashcardSet.module.css";
-import { API_URL } from "../constant";
+import LinkComponent from "../../components/LinkComponent";
+import styles from "./ChooseFlashcardSet.module.css";
+import { API_URL } from "../../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;

@@ -1,9 +1,9 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import axios from "axios";
-import styles from "./css/CreateSetForm.module.css";
+import styles from "./CreateSetForm.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { API_URL } from "../constant";
+import { API_URL } from "../../constant";
 
 interface QnaItem {
   question: string;

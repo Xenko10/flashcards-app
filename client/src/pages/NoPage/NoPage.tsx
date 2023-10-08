@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./css/NoPage.module.css";
+import styles from "./NoPage.module.css";
 
 export default function NoPage() {
   return (

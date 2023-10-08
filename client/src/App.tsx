@@ -2,14 +2,14 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home";
-import CreateSetForm from "./pages/CreateSetForm";
-import Flashcards from "./pages/ChooseFlashcardSet";
-import ChoosePageToEdit from "./pages/ChoosePageToEdit";
-import EditSetForm from "./pages/EditSetForm";
-import PlayWithFlashcards from "./pages/PlayWithFlashcards";
-import NoPage from "./pages/NoPage";
-import ChooseSetToDelete from "./pages/ChooseSetToDelete";
+import Home from "./pages/Home/Home";
+import CreateSetForm from "./pages/CreateSetForm/CreateSetForm";
+import Flashcards from "./pages/ChooseFlashcardSet/ChooseFlashcardSet";
+import ChoosePageToEdit from "./pages/ChoosePageToEdit/ChoosePageToEdit";
+import EditSetForm from "./pages/EditSetForm/EditSetForm";
+import PlayWithFlashcards from "./pages/PlayWithFlashcards/PlayWithFlashcards";
+import NoPage from "./pages/NoPage/NoPage";
+import ChooseSetToDelete from "./pages/ChooseSetToDelete/ChooseSetToDelete";
 
 export default function App() {
   return (

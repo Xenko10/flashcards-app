@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
-import styles from "./css/UseFlashcardSet.module.css";
+import styles from "./PlayWithFlashcards.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { API_URL } from "../constant";
+import { API_URL } from "../../constant";
 
 interface Action {
   type: string;

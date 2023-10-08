@@ -1,8 +1,8 @@
-import styles from "./css/ChooseSetToDelete.module.css";
+import styles from "./ChooseSetToDelete.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DeleteSet from "./pages_components/DeleteSet";
-import { API_URL } from "../constant";
+import DeleteSet from "./DeleteSet";
+import { API_URL } from "../../constant";
 
 type SetsDto = {
   Tables_in_flashcards: string;
