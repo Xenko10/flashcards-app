@@ -4,12 +4,12 @@ import LinkComponent from "./pages_components/LinkComponent";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./css/ChooseFlashcardSet.module.css";
 
-type setNameObject = {
+type SetsDto = {
   Tables_in_flashcards: string;
-};
+}[];
 
 export default function ChooseFlashcardSet() {
-  const [setsName, setSetsName] = useState([]);
+  const [setsName, setSetsName] = useState<SetsDto>([]);
 
   useEffect(() => {
     axios
@@ -26,7 +26,7 @@ export default function ChooseFlashcardSet() {
     <div className={styles.main}>
       <h1 className={styles.flashcardsText}>Flashcards sets</h1>
       <ul>
-        {setsName.map((setNameObject: setNameObject) => (
+        {setsName.map((setNameObject) => (
           <LinkComponent
             setName={setNameObject.Tables_in_flashcards}
             key={uuidv4()}

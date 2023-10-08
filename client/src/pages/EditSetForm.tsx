@@ -27,7 +27,7 @@ export default function EditSetForm() {
   useEffect(() => {
     axios
       .get(`http://localhost:5174/set/${flashcardId}`)
-      .then((res: any) => {
+      .then((res) => {
         setValue("qnaArray", res.data);
       })
       .catch((error) => {
