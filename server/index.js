@@ -12,18 +12,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const host_name = process.env.HOST_NAME;
+const hostName = process.env.HOST_NAME;
 const user = process.env.USER;
 const password = process.env.PASSWORD;
-const database = process.env.DATABASE;
-const database_port = process.env.PORT;
+const databaseName = process.env.DATABASE;
+const databasePort = process.env.PORT;
 
 const connection = mysql.createConnection({
-  host: host_name,
+  host: hostName,
   user: user,
   password: password,
-  database: database,
-  port: database_port,
+  database: databaseName,
+  port: databasePort,
 });
 
 app.post("/insert", (req, res) => {
@@ -64,7 +64,7 @@ app.delete("/delete/:tableName", (req, res) => {
 });
 
 app.get("/getsets", (req, res) => {
-  connection.query("show tables in ??", [database], (err, result) => {
+  connection.query("show tables in ??", [databaseName], (err, result) => {
     if (err) throw new Error(err);
     const data = JSON.parse(JSON.stringify(result));
     res.send(data);
