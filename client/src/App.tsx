@@ -7,7 +7,7 @@ import CreateSetForm from "./pages/CreateSetForm";
 import Flashcards from "./pages/ChooseFlashcardSet";
 import ChoosePageToEdit from "./pages/ChoosePageToEdit";
 import EditSetForm from "./pages/EditSetForm";
-import FlashcardPage from "./pages/UseFlashcardSet";
+import PlayWithFlashcards from "./pages/PlayWithFlashcards";
 import NoPage from "./pages/NoPage";
 import ChooseSetToDelete from "./pages/ChooseSetToDelete";
 
@@ -22,7 +22,10 @@ export default function App() {
         <Route path='/choose-page-to-edit' element={<ChoosePageToEdit />} />
         <Route path='/edit-set-form/:flashcardId' element={<EditSetForm />} />
         <Route path='/choose-set-to-delete' element={<ChooseSetToDelete />} />
-        <Route path='/flashcard/:flashcardId' element={<FlashcardPage />} />
+        <Route
+          path='/flashcard/:flashcardId'
+          element={<PlayWithFlashcards />}
+        />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

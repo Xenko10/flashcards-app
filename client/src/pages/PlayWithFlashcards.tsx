@@ -26,7 +26,7 @@ function reducer(count: number, action: Action) {
   }
 }
 
-export default function UseFlashcardSet() {
+export default function PlayWithFlashcards() {
   const [count, dispatch] = useReducer(reducer, 0);
   const [qnaList, setQnaList] = useState([{ question: "", answer: "" }]);
   const [isQuestion, setIsQuestion] = useState(true);
