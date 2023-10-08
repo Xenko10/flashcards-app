@@ -4,13 +4,12 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-export default function DeleteSet({
-  setName,
-  deleteSet,
-}: {
+type Props = {
   setName: string;
-  deleteSet: any;
-}) {
+  deleteSet: (setName: string) => void;
+};
+
+export default function DeleteSet({ setName, deleteSet }: Props) {
   const [open, setOpen] = useState(false);
   return (
     <>
