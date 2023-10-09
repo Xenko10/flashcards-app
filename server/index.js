@@ -12,11 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const hostName = process.env.HOST_NAME;
-const user = process.env.USER;
-const password = process.env.PASSWORD;
-const databaseName = process.env.DATABASE;
-const databasePort = process.env.PORT;
+const hostName = process.env.HOST_NAME || "localhost";
+const user = process.env.USER || "root";
+const password = process.env.PASSWORD || "";
+const databaseName = process.env.DATABASE || "flashcards";
+const databasePort = process.env.PORT || 4306;
 
 const connection = mysql.createConnection({
   host: hostName,
