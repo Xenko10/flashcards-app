@@ -132,11 +132,12 @@ app.get("/sets", (req, res) => {
   });
 });
 
-app.get("/set/:tableName", (req, res) => {
-  const tableName = req.params.tableName;
+app.get("/set/:tableName", async (req, res) => {
+  const setName = req.params.tableName;
+  const namesId = await getNamesId(setName);
   connection.query(
-    "SELECT question, answer FROM ??",
-    [tableName],
+    "SELECT question, answer FROM questions_and_answers WHERE names_id = ?",
+    [namesId],
     (err, result) => {
       if (err) {
         console.log(err);
