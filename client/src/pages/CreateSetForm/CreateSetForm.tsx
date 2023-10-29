@@ -11,15 +11,19 @@ interface QnaItem {
 }
 
 type FormValues = {
-  tableName: string;
+  setName: string;
   qnaArray: QnaItem[];
 };
+
+type SetsDto = {
+  name: string;
+}[];
 
 export default function CreateSetForm() {
   const navigate = useNavigate();
   const { register, control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      tableName: "",
+      setName: "",
       qnaArray: [{ question: "", answer: "" }],
     },
   });
@@ -27,7 +31,7 @@ export default function CreateSetForm() {
     name: "qnaArray",
     control,
   });
-  const [setsName, setSetsName] = useState([]);
+  const [setsName, setSetsName] = useState<SetsDto>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -41,8 +45,8 @@ export default function CreateSetForm() {
       });
   }, []);
 
-  function validate(tableName: string, arrayLength: number) {
-    if (tableName === "") {
+  function validate(setName: string, arrayLength: number) {
+    if (setName === "") {
       setError("You must type name of the set");
       return false;
     }
@@ -52,8 +56,8 @@ export default function CreateSetForm() {
     }
     if (
       setsName
-        .map((setNameObject: any) => setNameObject.Tables_in_flashcards)
-        .includes(tableName)
+        .map((setNameInDb) => setNameInDb.name.toLowerCase())
+        .includes(setName.toLowerCase())
     ) {
       setError("This set name already exists");
       return false;
@@ -62,14 +66,14 @@ export default function CreateSetForm() {
   }
 
   const onSubmit = (data: FormValues) => {
-    const tableName = data.tableName;
+    const setName = data.setName;
     const arrayLength = data.qnaArray.length;
-    const isValid = validate(tableName, arrayLength);
+    const isValid = validate(setName, arrayLength);
     if (isValid) {
       try {
         axios.post(`${API_URL}/set`, {
           qnaArray: data.qnaArray,
-          tableName: tableName,
+          setName: setName,
         });
         navigate("/");
       } catch (error) {
@@ -84,7 +88,7 @@ export default function CreateSetForm() {
         <h1 className={styles.h1TableNameInfo}>Type name of the set: </h1>
         <textarea
           placeholder='set name'
-          {...register("tableName")}
+          {...register("setName")}
           className={styles.tableNameTextArea}
         />
         {error && <p className={styles.error}>{error}</p>}

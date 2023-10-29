@@ -5,7 +5,7 @@ import LinkComponent from "../../components/LinkComponent";
 import { API_URL } from "../../constant";
 
 type SetsDto = {
-  Tables_in_flashcards: string;
+  name: string;
 }[];
 
 export default function ChoosePageToEdit() {
@@ -27,8 +27,8 @@ export default function ChoosePageToEdit() {
       <ul>
         {setsName.map((setNameObject) => (
           <LinkComponent
-            setName={setNameObject.Tables_in_flashcards}
-            key={setNameObject.Tables_in_flashcards}
+            setName={setNameObject.name}
+            key={setNameObject.name}
             subpageName='edit-set-form'
           />
         ))}

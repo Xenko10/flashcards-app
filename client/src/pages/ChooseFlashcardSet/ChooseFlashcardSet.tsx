@@ -5,7 +5,7 @@ import styles from "./ChooseFlashcardSet.module.css";
 import { API_URL } from "../../constant";
 
 type SetsDto = {
-  Tables_in_flashcards: string;
+  name: string;
 }[];
 
 export default function ChooseFlashcardSet() {
@@ -14,7 +14,7 @@ export default function ChooseFlashcardSet() {
   useEffect(() => {
     axios
       .get(`${API_URL}/sets`)
-      .then((res: any) => {
+      .then((res) => {
         setSetsName(res.data);
       })
       .catch((error) => {
@@ -26,10 +26,10 @@ export default function ChooseFlashcardSet() {
     <div className={styles.main}>
       <h1 className={styles.flashcardsText}>Flashcards sets</h1>
       <ul>
-        {setsName.map((setNameObject) => (
+        {setsName.map((setName) => (
           <LinkComponent
-            setName={setNameObject.Tables_in_flashcards}
-            key={setNameObject.Tables_in_flashcards}
+            setName={setName.name}
+            key={setName.name}
             subpageName='flashcard'
           />
         ))}

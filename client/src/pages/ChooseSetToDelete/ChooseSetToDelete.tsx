@@ -5,7 +5,7 @@ import DeleteSet from "./DeleteSet";
 import { API_URL } from "../../constant";
 
 type SetsDto = {
-  Tables_in_flashcards: string;
+  name: string;
 }[];
 
 export default function ChooseSetToDelete() {
@@ -25,9 +25,7 @@ export default function ChooseSetToDelete() {
   function deleteSet(set: string) {
     axios.delete(`${API_URL}/set/${set}`);
     setSetsName((prevSetsName) =>
-      prevSetsName.filter(
-        (prevSetName) => prevSetName.Tables_in_flashcards !== set
-      )
+      prevSetsName.filter((prevSetName) => prevSetName.name !== set)
     );
   }
 
@@ -37,8 +35,8 @@ export default function ChooseSetToDelete() {
       <ul>
         {setsName.map((setNameObject) => (
           <DeleteSet
-            setName={setNameObject.Tables_in_flashcards}
-            key={setNameObject.Tables_in_flashcards}
+            setName={setNameObject.name}
+            key={setNameObject.name}
             deleteSet={deleteSet}
           />
         ))}
