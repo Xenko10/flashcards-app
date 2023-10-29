@@ -57,33 +57,54 @@ connection.query(
   }
 );
 
-app.post("/set", (req, res) => {
-  const tableName = req.body.tableName;
+function getNamesId(setName) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT id FROM sets_names WHERE name = ?",
+      [setName],
+      (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          const namesId = JSON.parse(JSON.stringify(result))[0].id;
+          resolve(namesId);
+        }
+      }
+    );
+  });
+}
+
+app.post("/set", async (req, res) => {
+  const setName = req.body.tableName;
   const dataArray = req.body.qnaArray;
-  const values = dataArray.map((item) => [item.question, item.answer]);
-  connection.query(
-    `CREATE TABLE IF NOT EXISTS ?? (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    question VARCHAR(1000) NOT NULL,
-    answer VARCHAR(1000) NOT NULL
-  )`,
-    [tableName],
-    (err) => {
+
+  await connection.query(
+    "INSERT INTO sets_names (name) VALUES (?)",
+    [setName],
+    (err, result) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       } else {
-        console.log("Table created/exists");
+        console.log(
+          `Set name "${setName}" inserted successfully. ID: ${result.insertId}`
+        );
       }
     }
   );
-  connection.query(
-    "INSERT INTO ?? (question, answer) VALUES ?",
-    [tableName, values],
-    (err) => {
+
+  const namesId = await getNamesId(setName);
+  const values = dataArray.map((item) => [namesId, item.question, item.answer]);
+
+  await connection.query(
+    "INSERT INTO questions_and_answers (names_id, question, answer) VALUES ?",
+    [values],
+    (err, result) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       } else {
-        console.log("Values Inserted");
+        console.log(
+          `Question and answer inserted successfully. ID: ${result.insertId}`
+        );
       }
     }
   );
