@@ -33,9 +33,7 @@ connection.query(
 );`,
   (err) => {
     if (err) {
-      console.log(err);
-    } else {
-      console.log("Table created/exists");
+      console.error(err);
     }
   }
 );
@@ -47,12 +45,10 @@ connection.query(
     question VARCHAR(1000) NOT NULL,
     answer VARCHAR(1000) NOT NULL,
     CONSTRAINT qa_names_fk FOREIGN KEY (names_id) REFERENCES sets_names(id)
-);`,
+)`,
   (err) => {
     if (err) {
-      console.log(err);
-    } else {
-      console.log("Table created/exists");
+      console.error(err);
     }
   }
 );
@@ -81,13 +77,9 @@ app.post("/set", async (req, res) => {
   await connection.query(
     "INSERT INTO sets_names (name) VALUES (?)",
     [setName],
-    (err, result) => {
+    (err) => {
       if (err) {
         console.error(err);
-      } else {
-        console.log(
-          `Set name "${setName}" inserted successfully. ID: ${result.insertId}`
-        );
       }
     }
   );
@@ -98,13 +90,9 @@ app.post("/set", async (req, res) => {
   await connection.query(
     "INSERT INTO questions_and_answers (names_id, question, answer) VALUES ?",
     [values],
-    (err, result) => {
+    (err) => {
       if (err) {
         console.error(err);
-      } else {
-        console.log(
-          `Question and answer inserted successfully. ID: ${result.insertId}`
-        );
       }
     }
   );
@@ -112,27 +100,22 @@ app.post("/set", async (req, res) => {
 
 app.delete("/set/:setName", async (req, res) => {
   const setName = req.params.setName;
-  console.log(setName);
   const namesId = await getNamesId(setName);
   connection.query(
-    "DELETE FROM questions_and_answers WHERE names_id = ? ",
+    "DELETE FROM questions_and_answers WHERE names_id = ?",
     [namesId],
     (err) => {
       if (err) {
-        console.log(err);
-      } else {
-        console.log("Values deleted");
+        console.error(err);
       }
     }
   );
   connection.query(
-    "DELETE FROM sets_names WHERE name = ? ",
+    "DELETE FROM sets_names WHERE name = ?",
     [setName],
     (err) => {
       if (err) {
-        console.log(err);
-      } else {
-        console.log("Values deleted");
+        console.error(err);
       }
     }
   );
@@ -141,7 +124,7 @@ app.delete("/set/:setName", async (req, res) => {
 app.get("/sets", (req, res) => {
   connection.query("SELECT name FROM sets_names", (err, result) => {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else {
       const data = JSON.parse(JSON.stringify(result));
       res.send(data);
@@ -157,7 +140,7 @@ app.get("/set/:setName", async (req, res) => {
     [namesId],
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       } else {
         const data = JSON.parse(JSON.stringify(result));
         res.send(data);
@@ -176,9 +159,7 @@ app.patch("/set/:setName", async (req, res) => {
     [namesId],
     (err) => {
       if (err) {
-        console.log(err);
-      } else {
-        console.log("Values deleted");
+        console.error(err);
       }
     }
   );
@@ -188,13 +169,9 @@ app.patch("/set/:setName", async (req, res) => {
   await connection.query(
     "INSERT INTO questions_and_answers (names_id, question, answer) VALUES ?",
     [values],
-    (err, result) => {
+    (err) => {
       if (err) {
         console.error(err);
-      } else {
-        console.log(
-          `Question and answer inserted successfully. ID: ${result.insertId}`
-        );
       }
     }
   );
