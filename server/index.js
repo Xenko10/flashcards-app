@@ -75,7 +75,7 @@ function getNamesId(setName) {
 }
 
 app.post("/set", async (req, res) => {
-  const setName = req.body.tableName;
+  const setName = req.body.setName;
   const dataArray = req.body.qnaArray;
 
   await connection.query(
@@ -110,15 +110,32 @@ app.post("/set", async (req, res) => {
   );
 });
 
-app.delete("/set/:tableName", (req, res) => {
-  const tableName = req.params.tableName;
-  connection.query("DROP TABLE ??", [tableName], (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Table deleted");
+app.delete("/set/:setName", async (req, res) => {
+  const setName = req.params.setName;
+  console.log(setName);
+  const namesId = await getNamesId(setName);
+  connection.query(
+    "DELETE FROM questions_and_answers WHERE names_id = ? ",
+    [namesId],
+    (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Values deleted");
+      }
     }
-  });
+  );
+  connection.query(
+    "DELETE FROM sets_names WHERE name = ? ",
+    [setName],
+    (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Values deleted");
+      }
+    }
+  );
 });
 
 app.get("/sets", (req, res) => {
@@ -132,8 +149,8 @@ app.get("/sets", (req, res) => {
   });
 });
 
-app.get("/set/:tableName", async (req, res) => {
-  const setName = req.params.tableName;
+app.get("/set/:setName", async (req, res) => {
+  const setName = req.params.setName;
   const namesId = await getNamesId(setName);
   connection.query(
     "SELECT question, answer FROM questions_and_answers WHERE names_id = ?",

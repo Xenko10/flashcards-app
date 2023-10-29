@@ -14,7 +14,7 @@ export default function ChooseFlashcardSet() {
   useEffect(() => {
     axios
       .get(`${API_URL}/sets`)
-      .then((res: any) => {
+      .then((res) => {
         setSetsName(res.data);
       })
       .catch((error) => {
