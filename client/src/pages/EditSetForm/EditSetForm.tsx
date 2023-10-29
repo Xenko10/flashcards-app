@@ -44,10 +44,9 @@ export default function EditSetForm() {
   const onSubmit = (data: FormValues) => {
     if (data.qnaArray.length === 0) return;
     try {
-      axios.delete(`${API_URL}/set/${flashcardId}`);
-      axios.post(`${API_URL}/set`, {
+      axios.patch(`${API_URL}/set/${flashcardId}`, {
         qnaArray: data.qnaArray,
-        tableName: flashcardId,
+        setName: flashcardId,
       });
       navigate("/");
     } catch (error) {

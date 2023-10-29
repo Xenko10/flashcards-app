@@ -166,6 +166,40 @@ app.get("/set/:setName", async (req, res) => {
   );
 });
 
+app.patch("/set/:setName", async (req, res) => {
+  const setName = req.params.setName;
+  const dataArray = req.body.qnaArray;
+
+  const namesId = await getNamesId(setName);
+  connection.query(
+    "DELETE FROM questions_and_answers WHERE names_id = ? ",
+    [namesId],
+    (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Values deleted");
+      }
+    }
+  );
+
+  const values = dataArray.map((item) => [namesId, item.question, item.answer]);
+
+  await connection.query(
+    "INSERT INTO questions_and_answers (names_id, question, answer) VALUES ?",
+    [values],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(
+          `Question and answer inserted successfully. ID: ${result.insertId}`
+        );
+      }
+    }
+  );
+});
+
 app.listen(server_port, () => {
   console.log(`Running on port ${server_port}.`);
 });
