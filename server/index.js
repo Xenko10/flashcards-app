@@ -122,7 +122,7 @@ app.delete("/set/:tableName", (req, res) => {
 });
 
 app.get("/sets", (req, res) => {
-  connection.query("show tables in ??", [databaseName], (err, result) => {
+  connection.query("SELECT name FROM sets_names", (err, result) => {
     if (err) {
       console.log(err);
     } else {
