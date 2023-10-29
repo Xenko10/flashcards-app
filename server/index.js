@@ -26,6 +26,37 @@ const connection = mysql.createConnection({
   port: databasePort,
 });
 
+connection.query(
+  `CREATE TABLE IF NOT EXISTS sets_names (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255) NOT NULL
+);`,
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Table created/exists");
+    }
+  }
+);
+
+connection.query(
+  `CREATE TABLE IF NOT EXISTS questions_and_answers (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    names_id INT NOT NULL,
+    question VARCHAR(1000) NOT NULL,
+    answer VARCHAR(1000) NOT NULL,
+    CONSTRAINT qa_names_fk FOREIGN KEY (names_id) REFERENCES sets_names(id)
+);`,
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Table created/exists");
+    }
+  }
+);
+
 app.post("/set", (req, res) => {
   const tableName = req.body.tableName;
   const dataArray = req.body.qnaArray;
