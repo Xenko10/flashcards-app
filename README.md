@@ -8,7 +8,7 @@ The Flashcards app is an application that allows you to practice your knowledge 
 
 - git clone https://github.com/Xenko10/flashcards-app.git
 - cd flashcards-app
-- yarn
+- start setup.bat
 
 2. Run the following.
 
