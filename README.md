@@ -3,14 +3,16 @@
 The Flashcards app is an application that allows you to practice your knowledge using digital flashcards on your computer. You can create new sets, play with them, edit existing sets, and delete sets.
 
 <div align="center">
-    <h2>Main</h2>
+    <h2>Home</h2>
 <img src="./img/main.png" alt="main">
     <h2>Creating set</h2>
 <img src="./img/creating_set.png" alt="creating set">
     <h2>Choosing set</h2>
 <img src="./img/choosing_set.png" alt="choosing set">
     <h2>Flashcards</h2>
+    <h3>First flashcard</h3>
 <img src="./img/using_flashcards.png" alt="flashcards">
+    <h3>Last flashcard</h3>
 <img src="./img/using_flashcards2.png" alt="flashcards">
 </div>
 
